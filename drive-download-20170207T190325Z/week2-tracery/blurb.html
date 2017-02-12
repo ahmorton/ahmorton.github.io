@@ -1,0 +1,30 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>What book did <a href="https://www.amazon.com/Angel-Wore-Fangs-Deadly-Angels/dp/0062356542/ref=asap_bc?ie=UTF8">New York Times bestselling author Sandra Hill</a> write this time?</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+	"S": ["'The #being# #verb# #attribute#': Once guilty of the deadly sin of #sin#, #age# Viking vampire angel #ProtagName# is now a lean, mean, vampire-devil fighting machine. His new side-job? No biggie: just ridding the world of a threat called ISIS while keeping the evil Lucipires (demon vampires) at bay. So when #profession# #LoveIntName# hires him to rescue her #relation# from a cult recruiting terrorists at a Montana dude ranch, vangel turns cowboy. #Exclamation#! The too-tempting mortal insists on accompanying him, surprising #ProtagName# with her #skill# at every turn. But with terrorists stalking the ranch in demonoid form, #ProtagName# teletransports #LoveIntName# and himself out of danger — accidentally into the #timeperiod# #location#. Suddenly, they have to find their way back to the future to save her family and the world . . . and to satisfy their insatiable attraction."]
+	"being": ["Angel", "Demon", "Vampire", "Viking", "Vampire", "Werewolf", "Cowboy"],
+	"verb": ["Wore", "Has", "Loves", "Trusts", "Designs", "Aches for"],
+	"attribute": ["Fangs", "Women", "Wings", "a Cape", "Love", "Desire", "Heat", "an Angel", "a Demon"],
+	"sin": ["gluttony", "lust", "avarice", "greed", "sloth", "laziness", "wrath", "anger", "envy", "pride", "jealousy", "adultery", "fuckin", "temptation", "rough sex", "slippery sex", "messy sex", "dirty sex", "vore", "horse fucking", "being a furry", "wearing socks with sandals", "wearing orange velour", "thinking sexual thoughts about Vladimir Putin", "writing a vore poem", "writing erotic fanfiction", "saying the phrase 'leaky sieve' one too many times", "attempting to marry a coat rack", "changing his name to a Lord of the Rings character"],
+	"age": ["newborn", "ten thousand year old", "ancient", "fifty year old", "prehistoric", "mid-thirties", "young", "old"],
+	"ProtagName": ["Raphael", "Randal", "Qadir", "Gdalicanu", "Vincent", "Holstein", "Damascus", "Hannibal", "Lancelot", "Demidicus", "Tama", "Boris", "Lestat", "Wilfred", "Ciaran", "Wolf", "Ywain", "Lafayette", "Iancu", "Taos", "Phoenix", "London", "Cadogan", "Arthur", "Brendan", "Louis", "Lennix", "Killian", "Azriel", "Jonas", "Gale", "Julian", "Drake", "Cadogan", "Frank", "Damien", "Creighton", "Sabien", "Ascelin"],
+	"profession": ["chef", "firefighter", "teacher", "astronomer", "astronaut", "cowgirl", "CEO", "shoe store employee", "McDonald's cashier", "veterinarian", "attorney", "town drunk", "fisherman", "yacht enthusiast", "amateur beekeeper", "private detective", "porn star", "used car salesman"],
+	"LoveIntName": ["Geraldine Case", "Flossie Hoffman", "Anne Hammond", "Janice Vincent", "Anna Mason", "Angela Cash", "Audrey Hansen", "Anna Adkins", "Heather Stephens", "Gabrielle Bolton", "Phyllis Larson", "Susie O'Neal", "Phyllis Adkins", "Juanita Stokes", "Patricia McConnell", "Rita Ramsey", "Jaclyn Gordon", "Tamara Lloyd", "Diamond Reynolds", "Reagan Dean", "Beulah Brooks", "Phyllis Bernard", "Jill Rowe", "Patty Albert", "Denise Holt", "Marjorie Evans", "Heather Kidd", "Robin Hooper", "Grace Mathews", "Bethany Quinn"], 
+	"relation": ["brother", "sister", "mother", "father", "aunt", "uncle", "cousin", "grandmother", "grandfather", "boyfriend", "girlfriend", "significant other", "fuck buddy", "BFF", "hot professor", "favorite barista", "cat", "dog", "car", "house"], 
+	"Exclamation": ["Yeehaw", "Yowza", "Yippee", "Wowza", "Shucks", "Booyah", "Hubba hubba", "Oh ho ho", "Va-va-voom", "Daaaaamn", "Yikes", "Wow! Amazing", "Zoinks", "Yum"],
+	"skill": ["bravery", "nice ass", "inhuman strength", "emotional maturity", "quick reflexes", "fortitude", "charisma", "dexterity", "dextrous fingers", "wisdom", "intelligence"],
+	"timeperiod": ["10th century", "futuristic", "Medieval", "Age of Enlightenment", "Renaissance", "Victorian", "early 21st century", "WWII-era"],
+	"locaton": ["Norselands", "Soviet Union", "Gaul", "Roman Empire", "space station", "fantasy world"]
+
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#S#");
+	$('h1').text(t);
+}
+</script>
+

@@ -1,0 +1,35 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Text will go here</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+		"S": ["Roll a d#number#. You get #action# by a #race# #class#.", "Roll a d#number#. You get #action# by an #acreature#.", "Roll a d#number#. You get #action# by a #creature#.", "Your #attempt# to #verb# the #creature# #outcomed#.", "Your #attempt# to #verb# the #race# #class# #outcomed#.", "Roll an #ability# check to see if your #attempt# to #verb# the #creature# #outcomes#.", "Roll an #aability# check to see if your #attempt# to #verb# the #race# #class# #outcomes#.", "You find yourself in a #place#. Roll a #ability# check.", "You find yourself in an #aplace#. Roll an #aability# check.", "The #creature# #appearance# #emotion#. #question#?", "The #race# #class# #appearance# #emotion#. #question#?", "There is a #creature# in the #place#. #question#?", "There is an #acreature# in the #place#. #question#?", "You rolled a #lowvalue#. Unfortunately, that's not enough for you to #verb# the #creature#.", "You rolled a #midvalue#. That's just barely enough to #verb# the #race# #class#.", "You rolled a #highvalue#! Your #attempt# to #verb# the #creature# was a brilliant success.", "You rolled a #highvalue#. Your #attempt# to #verb# the #race# #class# went off without a hitch!"],
+	"number": ["4", "6", "10", "12", "20"],
+	"action": ["attacked", "tricked", "smooched", "seduced", "carried off", "adopted", "mourned"],
+	"race": ["elf", "half-elf", "halfling", "human", "orc", "half-orc", "gnome", "tiefling", "dragonborn", "dwarf"],
+	"class": ["wizard", "warlock", "sorceror", "bard", "cleric", "paladin", "fighter", "rogue", "monk", "barbarian", "druid", "ranger"],
+	"creature": ["sexy elf lady", "dragon", "bug bear", "griffin", "hot blacksmith", "grizzled carpenter", "sea monster", "milky tentacle beast", "giant bird", "troll", "demon", "grumpy swordsman", "drunk pirate captain", "she-wolf", "shirtless werewolf", "vampire prince", "spider queen", "brood mother", "mysterious spy", "flirty ghost", "howling spirit", "wise cattleman"],
+	"acreature": ["unimaginable horror", "irritated librarian", "old wizard", "ancient god", "incompetent magician"],
+	"attempt": ["attempt", "plan", "mission", "intention"],
+	"verb": ["sneak past", "wrassle", "wrestle", "get down and dirty with", "interrogate", "deceive", "heal", "revive", "save", "befriend", "rescue", "destroy", "seduce", "entrap", "attack", "stab", "kiss", "marry", "kill", "enslave", "catch", "trick", "adopt"],
+	"outcomed": ["was a failure", "was a success", "just barely succeeded", "left your party in the lurch", "made you go insane", "was a bad idea", "worked out well for everyone"],
+	"ability": ["strength", "dexterity", "constitution", "wisdom", "charisma", "deception", "history", "medicine", "nature", "perception", "performance", "persuasion", "religion", "sleight of hand", "stealth", "survival"],
+	"aability": ["intelligence", "acrobatics", "animal handling", "arcana", "athletics", "insight", "intimidation", "investigation"],
+	"outcomes": ["succeeds", "goes well", "is hopeless", "kills you", "kills your party", "brings about the end of the world", "solves an age-old mystery", "was a good idea after all", "fails miserably"],
+	"place": ["dungeon", "forest", "tavern", "city", "brothel", "mithril mine", "goblin cave", "secret moon base", "invisible castle", "forgotten grotto", "rift in time and space", "mountain stronghold", "mystical lake"],
+	"aplace": ["ancient cavern", "underwater temple", "opulent palace", "invisible castle", "unknown source of magic"],
+	"appearance": ["looks", "appears", "is", "seems", "acts"],
+	"emotion": ["angry", "ungrateful", "bored", "forgetful", "intrigued", "upset", "innocent", "terrified", "scary", "creepy", "gentle", "threatening", "nice", "mean", "indifferent", "helpful", "rude", "kind", "sexy"],
+	"question": ["What do you do", "What do you want to do", "What's your next step", "Do you approach", "Do you run away", "What's your plan", "What do you say", "Do you want to stay", "Do you attack"],
+	"lowvalue": ["2", "3", "5", "7", "9", "10"],
+	"midvalue": ["13", "14", "15", "16"],
+	"highvalue": ["17", "18", "19", "20"],
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#S#");
+	$('h1').text(t);
+}
+</script>
