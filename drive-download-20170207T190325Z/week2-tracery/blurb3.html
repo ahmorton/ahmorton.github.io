@@ -1,0 +1,68 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1><font face="verdana" size="5">What book did <a href="https://www.amazon.com/Angel-Wore-Fangs-Deadly-Angels/dp/0062356542/ref=asap_bc?ie=UTF8"><i>New York Times</i> bestselling author Sandra Hill</a> write this time? </font></h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+
+	"S": ["'The #being# #verb# #attribute#': Once guilty of the deadly sin of #sin#, #age# Viking vampire angel (Vangel) #ProtagName# is now a lean, mean, vampire-devil fighting machine. His new side-job? No biggie: just ridding the world of a threat called #threat# while keeping the evil Lucipires (demon vampires) at bay. So when #profession# #LoveIntName# hires him to rescue her #relation# from a cult recruiting #badguy# at a #place#, Vangel turns #professionmale#. #Exclamation.capitalize#! The #adjective# #mortal# insists on accompanying him, surprising him with her #skill# at every turn. But with #badguy# stalking the #place# in #form# forms, the Vangel #transports# his #petname# and himself out of danger — accidentally into the #timeperiod# #location#. Suddenly, they have to find their way back to the future to save her family and the world . . . and to satisfy their #adjective# #noun#.", "'#adj1# and #adj2#': It takes nothing short of a miracle to #transport# Lt. #ProtagName# #ProtagLastName# and his team of Navy SEALs back in time to the #timeperiod# #place#. First on the agenda: destroy the #eviladj# villain who #swallowed# his #relation# and the #location#. But when the #adjective# SEALs find they’ve landed in the middle of a sanctuary — filled with #women# — well, #Exclamation#! Their plans are put on hold, much to the distress of #Hilda#, the head of the sanctuary. At first resistant to the Lieutenant's #adjective# pursuits, she soon succumbs to his #adjective# advances. #innuendo# But with victory in sight for her #virile# #petname#, she must face the fact that their #love2# may not survive the test of time...", "'Good #being.s# Go To #Heaven#': #age.capitalize# vampire demon #ProtagName# is supposed to spend eternity turning mortal sinners into bad guy Lucipires like himself. That way, they can grow their numbers and fight the vampire angels known as Vangels. But this Lucipire is a bad boy in a #goodadj# way — secretly working as a double agent for none other than #person# in hopes of one day earning his #possession#. Problem is, this hottie's betrayal is discovered when he makes the mistake of #sin#. Hello, demon dungeon.  HE WAS VERY BAD . . .  Until #LoveIntName3#, a #adjective#, #color#-haired Vangel witch on a rescue mission, busts out our hero, along with three #adjective2# Lucipire witches. Hello, #noun#!  BUT TOGETHER THEY WERE VERY GOOD . . . !  Their escape unleashes a war to defeat all Vangels #quantifier#. In an #epic# #adjective3# #battle# between #goodnoun# and #evilnoun#, a #being# just might earn his #possession# . . . and spend eternity with the Vangel of his #superlative# dreams."],
+	"being": ["Angel", "Demon", "Vampire", "Viking", "Vampire", "Werewolf", "Cowboy"],
+	"verb": ["Wore", "Has", "Loves", "Trusts", "Designs", "Aches for"],
+	"attribute": ["Fangs", "Women", "Wings", "a Cape", "Love", "Desire", "Heat", "an Angel", "a Demon"],
+	"sin": ["gluttony", "lust", "avarice", "greed", "sloth", "laziness", "wrath", "anger", "envy", "pride", "jealousy", "adultery", "fuckin", "temptation", "rough sex", "slippery sex", "messy sex", "dirty sex", "vore", "horse fucking", "being a furry", "wearing socks with sandals", "wearing orange velour", "thinking sexual thoughts about Vladimir Putin", "writing a vore poem", "writing erotic fanfiction", "saying the phrase 'leaky sieve' one too many times", "attempting to marry a coat rack", "changing his name to a Lord of the Rings character"],
+	"age": ["newborn", "ten-thousand-year-old", "ancient", "fifty year old", "prehistoric", "mid-thirties", "young", "old", "two-thousand-year-old"],
+	"ProtagName": ["Raphael", "Randal", "Qadir", "Gdalicanu", "Vincent", "Holstein", "Damascus", "Hannibal", "Lancelot", "Demidicus", "Tama", "Boris", "Lestat", "Wilfred", "Ciaran", "Wolf", "Ywain", "Lafayette", "Iancu", "Taos", "Phoenix", "London", "Cadogan", "Arthur", "Brendan", "Louis", "Lennix", "Killian", "Azriel", "Jonas", "Gale", "Julian", "Drake", "Cadogan", "Frank", "Damien", "Creighton", "Sabien", "Ascelin"],
+	"ProtagLastName": ["Magnusson", "Thorgeirsson", "Thorkelsson", "Sigurdsson", "Thormundsson", "Gunnarsson", "Njalsson", "Thorsteinsson"],
+	"threat": ["terrorism", "global warming", "rising sea levels", "the nuclear apocalypse", "widespread diarrhea", "flash mobs", "bad erotica", "the zombie apocalypse"],
+	"profession": ["chef", "lawyer", "firefighter", "teacher", "astronomer", "astronaut", "cowgirl", "CEO", "shoe store employee", "McDonald's cashier", "veterinarian", "attorney", "town drunk", "fisherman", "yacht enthusiast", "amateur beekeeper", "private detective", "porn star", "used car salesman"],
+	"professionmale": ["chef", "cowboy", "lawyer", "firefighter", "teacher", "astronomer", "astronaut", "CEO", "shoe store employee", "McDonald's cashier", "veterinarian", "attorney", "town drunk", "fisherman", "yacht enthusiast", "amateur beekeeper", "private detective", "porn star", "used car salesman"],
+	"LoveIntName": ["Geraldine Case", "Flossie Hoffman", "Anne Hammond", "Janice Vincent", "Anna Mason", "Angela Cash", "Audrey Hansen", "Anna Adkins", "Heather Stephens", "Gabrielle Bolton", "Phyllis Larson", "Susie O'Neal", "Phyllis Adkins", "Juanita Stokes", "Patricia McConnell", "Rita Ramsey", "Jaclyn Gordon", "Tamara Lloyd", "Diamond Reynolds", "Reagan Dean", "Beulah Brooks", "Phyllis Bernard", "Jill Rowe", "Patty Albert", "Denise Holt", "Marjorie Evans", "Heather Kidd", "Robin Hooper", "Grace Mathews", "Bethany Quinn"], 
+	"relation": ["brother", "sister", "mother", "father", "aunt", "uncle", "cousin", "grandmother", "grandfather", "boyfriend", "girlfriend", "significant other", "fuck buddy", "BFF", "hot professor", "favorite barista", "cat", "dog", "car", "house"], 
+	"mortal": ["mortal", "woman", "female", "lady"],
+	"badguy": ["terrorists", "werewolves", "Lucipires", "weebs", "professional gamers", "furries", "nerds", "evil houseplants", "goblins"],
+	"form": ["demonoid", "human", "non-time-dependent", "spiritual", "souless", "horrifying"],
+	"place": ["Montana dude ranch", "California surfer hotspot", "trendy New York City coffeeshop", "university in Massachusetts", "Salem witch hunt", "Halloweentown haunted maze", ],
+	"Exclamation": ["yeehaw", "yowza", "yippee", "wowza", "shucks", "booyah", "hubba hubba", "oh ho ho", "va-va-voom", "daaaaamn", "yikes", "Wow! Amazing!", "zoinks", "yum", "hoo-yah"],
+	"adjective": ["too-tempting", "passionate", "scrumptious", "sexually attractive","hot", "seductive", "erotic", "X-rated", "exciting", "stimulating", "titillating", "naughty", "risque", "raunchy", "horny", "insatiable", "sexed up", "sexual", "luscious", "toothsome", "sumptious", "foxy", "reserved", "sweet-smelling", "delicious", "delectable"],
+	"skill": ["bravery", "nice ass", "inhuman strength", "emotional maturity", "quick reflexes", "fortitude", "charisma", "dexterity", "dextrous fingers", "wisdom", "intelligence"],
+	"petname": ["love", "dear", "darling", "honey", "sweetie", "sweetiepie", "sugarcake", "honeybunch", "loverbaby", "loveyboo", "hottie"],
+	"timeperiod": ["10th century", "Medieval", "Age of Enlightenment", "Industrial Revolution", "15th century", "Civil-War-era", "Cold-War-era", "ancient", "Renaissance", "Victorian-era", "early 20th century", "WWII-era"],
+	"location": ["Norselands", "Soviet Union", "Roman Empire", "space station", "fantasy world"],
+	"adj1": ["Rough", "Big", "Hot", "Long", "Thin", "Large"],
+	"adj2": ["Ready", "Brawny", "Sexy", "Hard", "Scrawny", "Beefy"],
+	"transport": ["teletransport", "teleport", "catapult", "pull", "shove"],
+	"transports": ["teletransports", "teleports", "catapults", "pulls", "shoves"],
+	"women": ["women", "angels", "demons", "vampires", "vikings", "valkyries", "werewolves", "cowgirls"],
+	"Hilda": ["Frangi Oakthistle", "Poplar Maplethorn", "Shiny Pepperbite", "Pepper Nightbees", "Sundew Darksong", "Spruce Airshadow", "Tidal Beautywings", "Layla Twinkletwirl", "Chaldera Rainbowspice", "Lumiona Applecone", "Walnut Spiderboots", "Rhodie Merrynut", "Lucky Grassygust", "Mia Blackvine", "Walnut Lotusspring", "Margo Shinywhite", "Rola Plumgourd", "Caliphe Bubblebug", "Lauren Tigertwist", "Midnight Beautyclover"],
+	"innuendo": ["Suddenly the term “Special Forces” takes on a whole new meaning.", "Is it time to set up a sex dungeon?", "Suddenly, she discovers what it truly means to be a woman."],
+	"Heaven": ["Heaven", "Hell", "Purgatory", "New Jersey", "Washington D.C.", "the Bathroom", "the Sex Dungeon"], 
+	"LoveIntName3": ["Bernia", "Alvira", "Genevieve", "Narcisa", "Raven", "Amalia", "Eranthe", "Helena", "Ana", "Pixie", "Gretchen", "Emily", "Sabrione", "Faine", "Lilah", "Myth", "Hestia", "Khalida", "Poison", "Selena"],
+	"color": ["flame", "red", "glossy", "raven", "chestnut", "golden", "maroon", "blue", "pink", "green", "turquoise", "purple", "white", "silver", "platnium"],
+	"person": ["the Archangel St. Michael", "Barack Obama", "Christina Paxson", "Bethesda", "the Star King", "George R. R. Martin", "Thomas Edison", "Benjamin Franklin", "E.L. James", "the Blood King", "Santa Claus", "Vladimir Putin", "the Kracken", "a giant squid", "the anonymous author of Beowulf", "Snorri Sturluson"],
+	"possession": ["wings", "fangs", "heart", "tail", "feet", "hands", "sweet cape", "badge", "participation medal"],
+	"quantifier": ["forevermore", "for eternity", "until the end of time", "for the next week", "at least for a month", "for a couple of years or so", "hopefully for a few days"],
+	"goodnoun": ["good", "virtue", "morality", "integrity", "honesty", "truth", "honor", "propriety", "worthiness", "merit", "enjoyment", "comfort", "purity"],
+	"goodadj": ["good", "virtuous", "healthy", "wholesome", "kindhearted", "fine", "sound", "intimate", "worthy", "gentle", "impeccable", "questionable", "obedient", "righteous"],
+	"evilnoun": ["evil", "wickedness", "sin", "immorality", "malevolence", "nefariousness", "degeneracy", "disaster", "misfortune", "barbarity"],
+	"eviladj": ["evil", "nefarious", "wicked", "immoral", "sinful", "malevolent", "degenerate", "disastrous", "uncool", "mean", "angry"],
+	"adjective2": ["shy", "oddball", "miserly", "plain-looking", "unconventionally attractive", "loud-mouthed", "abrasive", "irritating", "gentle", "sweet", "tasty"],
+	"swallowed": ["swallowed", "terrorized", "bullied", "intimidated", "harrassed", "gulped down", "parched his thirst with", "vored", "consumed", "devoured", "inbibed"],
+	"wildly": ["sometimes", "wildly", "somewhat", "occasionally", "intensely", "achingly", "extravagantly", "implausibly"],
+	"virile": ["virile", "manly", "masculine", "fertile", "infertile", "sterile", "brawny", "red-blooded", "macho", "butch", "beefy", "hunky", "testosteronic", "lusty", "husky", "rugged", "muscly"],
+	"question1": ["Can a man die of testosterone overload", "Can a man reach Nirvana through lovemaking", "Is it possible for a human male to subsist on pheromones alone"],
+	"question2": ["Can a straightlaced female lose every single one of her inhibitions", "Can a unpretentious woman use chemicals to find the man of her dreams", "Is it ethical to create an irresistible love potion"],
+	"love2": ["love", "forbidden dalliance", "lust", "good roll in the hay", "ardor", "desire", "devotion", "adoration", "sexual healing", "fondness", "real feelings", "old-fashioned romance", "illegal concoction", "newfangled courtship ritual", "new passion", "flirtation", "secret tryst", "good bodice-ripper"],
+	"adjective3": ["madcap", "hairball", "seat of the pants", "reckless", "foolish", "foolhardy", "stupid", "wild", "crack-brained", "zany", "eccentric", "unconventional", "imprudent", "ill-advised"],
+	"epic": ["epic", "crazy", "intense", "sick", "totally awesome", "amazing", "incredible", "awe-inspiring", "heroic", "ambitious", "very long", "monumental", "adventurous"],
+	"battle": ["battle", "coonversation", "face-off", "kickball game", "game of golf", "arm-wrestling match", "tie-breaker game of rock, paper, scissors", "peace negotiation"],
+	"noun": ["temptation", "lust", "desire", "enticement", "allure", "attraction"],
+	"superlative": ["wildest", "craziest", "most improbable", "wet", "sexiest", "most awesome", "most delightful"]
+
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#S#");
+	$('h1').text(t);
+}
+</script>
