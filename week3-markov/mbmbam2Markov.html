@@ -2,19 +2,14 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGeneratorWord(1,40)
+var markov = new MarkovGenerator(5,300)
 $.get("confessions.txt", function(text) {
      markov.feed(text);
-
 });
-$.get("vore.txt", function(text) {
-     markov.feed(text);
-
-});
-
 function generate(){
 	var t = markov.generate()
-	$('body').append("<p>"+t+"</p>")
+	$('h1').text(t);
 }
 </script>
+<h1>Markov-generated text will go here</h1>
 <button onclick="generate()">Generate</button>
