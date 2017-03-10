@@ -2,14 +2,20 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGenerator(5,300)
+var markov = new MarkovGenerator(5,200)
 $.get("confessions.txt", function(text) {
      markov.feed(text);
 });
 function generate(){
 	var t = markov.generate()
+	t = t.split(" ").slice(0,-1).join(" ")
 	$('h1').text(t);
 }
 </script>
+<style>
+p {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+</style>
 <h1>confessions</h1>
 <button onclick="generate()">Generate</button>
