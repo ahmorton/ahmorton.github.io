@@ -3,8 +3,14 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGeneratorWord(3,50)
+var markov = new MarkovGeneratorWord(2,50)
 $.get("kingjamesbible.txt", function(text) {
+     markov.feed(text);
+});
+$.get("paradiselost.txt", function(text) {
+     markov.feed(text);
+});
+$.get("inferno.txt", function(text) {
      markov.feed(text);
 });
 function generate(){
@@ -15,7 +21,6 @@ function generate(){
 <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
 <h2> systhesis </h2>
-<p>Markov-generated text will go here</p>
 <button onclick="generate()">teach me</button>
 <h3> <a href="https://ahmorton.github.io/dla%201/directory.html">lights will guide you home</a> </h3>
 
