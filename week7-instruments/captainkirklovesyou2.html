@@ -2,18 +2,15 @@
 h1 {
 	text-align: center;
 	font-size: 2em;
-    font-family: 'Codystar', cursive;
+    font-family: 'Baloo Bhaina', cursive;
     font-color: white;
 }
 #textDiv{
 	margin-top: 5%;
 }
 html { 
-  background: url(enterprise.jpg) no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url(background.png) repeat; 
+
 }
 </style>
 <script src="../lib/jquery-1.11.1.min.js"></script>
@@ -22,13 +19,14 @@ html {
 Mousetrap.bind("space", function(){
 	typeText("this is your captain speaking")
 	playSound("log")
+    setBgImage('Kirk11.gif')
 })
 Mousetrap.bind("z", function(){
 	typeText("your captain says")
 	playSound("intercom")
 })
 Mousetrap.bind("x", function(){
-	typeText("i love you very much", 10)
+	typeText("i love you very much")
 	playSound("fascinating")
 })
 Mousetrap.bind("c", function(){
@@ -36,15 +34,15 @@ Mousetrap.bind("c", function(){
 	playSound("torpedo")
 })
 Mousetrap.bind("v", function(){
-	typeText2("keep yourself warm and dry")
+	typeText("keep yourself warm and dry")
 	playSound("redalert")
 })
 Mousetrap.bind("b", function(){
-	typeText2("hydrate")
+	typeText("hydrate")
 	playSound("intercom")
 })
 Mousetrap.bind("n", function(){
-    typeText2("sleep well")
+    typeText("sleep well")
     playSound("illogical")
 })
 Mousetrap.bind("n", function(){
@@ -52,24 +50,19 @@ Mousetrap.bind("n", function(){
     playSound("redalert")
 })
 Mousetrap.bind("m", function(){
-    typeText("1) use your fists")
+    typeText("use your fists")
     playSound("redalert")
 })
 Mousetrap.bind("g", function(){
-    typeText("2) your whole body is a weapon")
+    typeText("your whole body is a weapon")
     playSound("redalert")
 })
 Mousetrap.bind("h", function(){
-    typeText("3) improvise")
+    typeText("improvise")
     playSound("redalert")
-})
 
 
 
-
-
-Mousetrap.bind("enter", function(){
-	setBgImage('Kirk1.gif')
 })
 Mousetrap.bind("q", function(){
     setBgImage('Kirk2.gif')
@@ -94,6 +87,15 @@ Mousetrap.bind("u", function(){
 })
 Mousetrap.bind("i", function(){
     setBgImage('Kirk9.gif')
+})
+Mousetrap.bind("j", function(){
+    setBgImage('Gorn1.gif')
+})
+Mousetrap.bind("k", function(){
+    setBgImage('Spock1.gif')
+})
+Mousetrap.bind("l", function(){
+    setBgImage('Enterprise1.gif')
 })
 
 Mousetrap.bind("backspace", function(){
@@ -178,8 +180,8 @@ function setTextColor(color){
 <audio id="theme" src="tosOpeningRemastered.mp3" preload="auto"></audio>
 <audio id="log" src="tosKirkCaptainsLogSupplemental.mp3" preload="auto"></audio>
 <audio id="illogical" src="tosKirkSpockYourIllogicalApproach.mp3" preload="auto"></audio>
-<link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
 <div id="textDiv">
-<h1>hit space: </br> the final frontier </br> Backspace to beam up</h1>
+<h1>hit space: the final frontier </br> backspace to beam up</h1>
 </div>
 <span id="bottom"></span>
