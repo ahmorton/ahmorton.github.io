@@ -1,12 +1,27 @@
-<html>
-<head>
+
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var markov = new MarkovGeneratorWord(3,50)
+$.get("Genesis1.txt", function(text) {
+     markov.feed(text);
+});
+function generate(){
+    var t = markov.generate()
+    $('h1').text(t);
+}
+</script>
 <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
 <p> systhesis </p>
+<h1>Markov-generated text will go here</h1>
+<button onclick="generate()">teach me</button>
 <h3> <a href="https://ahmorton.github.io/dla%201/directory.html">lights will guide you home</a> </h3>
+
 <style>
 p {
-	text-align: center;
+    text-align: center;
     color: #31026b;
     font-family: 'VT323', monospace;
 }
@@ -35,17 +50,3 @@ a:active {
     color: #bc429b;
     text-decoration: none;
 </style>
-<script src="../lib/jquery-1.11.1.min.js"></script>
-<script src="../lib/markov.js"></script>
-<script>
-var txt;
-var markov = new MarkovGeneratorWord(3,50)
-$.get("Genesis1.txt", function(text) {
-     markov.feed(text);
-});
-function generate(){
-    var t = markov.generate()
-    $('h1').text(t);
-}
-</script>
-<button onclick="generate()">Generate</button>
