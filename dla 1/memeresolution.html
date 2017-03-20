@@ -1,9 +1,9 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
 <p> systhesis </p>
 <h3> <a href="https://ahmorton.github.io/dla%201/directory.html">lights will guide you home</a> </h3>
-
 <style>
 p {
 	text-align: center;
@@ -11,13 +11,18 @@ p {
     font-family: 'VT323', monospace;
 }
 
+h3 {
+    font-family: 'Jim Nightshade', cursive;
+    color: #f44242;
+}
+
 a:link {
-    color: #31026b;
+    color: #f44242;
     text-decoration: none;
 }
 
 a:visited {
-    color: #31026b;
+    color: #f44242;
     text-decoration: none;
 }
 
@@ -27,6 +32,20 @@ a:hover {
 }
 
 a:active {
-    color: ##bc429b;
+    color: #bc429b;
     text-decoration: none;
 </style>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var markov = new MarkovGeneratorWord(3,50)
+$.get("Genesis1.txt", function(text) {
+     markov.feed(text);
+});
+function generate(){
+    var t = markov.generate()
+    $('h1').text(t);
+}
+</script>
+<button onclick="generate()">Generate</button>
