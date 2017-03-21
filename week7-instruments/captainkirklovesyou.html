@@ -1,78 +1,138 @@
 <style>
 h1 {
-    text-align: center;
-    font-size: 2em;
-    font-family: Arial Black;
+	text-align: center;
+	font-size: 2em;
+    font-family: 'Baloo Bhaina', cursive;
+    font-color: white;
 }
 #textDiv{
-    margin-top: 5%;
+	margin-top: 5%;
 }
 html { 
-  background: url(enterprise.jpg) repeat; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url(background.png) repeat; 
+
 }
 </style>
 <script src="../lib/jquery-1.11.1.min.js"></script>
 <script src="../lib/mousetrap.min.js"></script>
-<script src="../lib/p5.min.js"></script>
 <script>
-Mousetrap.bind("q", function(){
+Mousetrap.bind("space", function(){
 	typeText("this is your captain speaking")
-	playSound("")
-})
-Mousetrap.bind("w", function(){
-	typeText("and your captain says")
-	playSound("")
-})
-Mousetrap.bind("e", function(){
-	typeText("i love you very much", 10)
-	playSound("")
-})
-Mousetrap.bind("r", function(){
-	typeText("and I hope you stay safe")
-	playSound2("")
+	playSound("log")
+    setBgImage('Kirk11.gif')
 })
 Mousetrap.bind("a", function(){
-	showText2("keep yourself warm and dry")
-	playSound2("")
+	typeText("your captain says")
+	
 })
-Mousetrap.bind("s", function(){
-	showText2("hydrate")
-	playSound2("")
-})
-Mousetrap.bind("d", function(){
-    showText2("sleep well")
-    playSound2("heart")
-})
-
-
-Mousetrap.bind("z", function(){
-	setBgImage('Kirk1.gif')
-})
-Mousetrap.bind("x", function(){
-    setBgImage('Kirk2.gif')
+Mousetrap.bind("b", function(){
+    playSound("intercom")
 })
 Mousetrap.bind("c", function(){
-    setBgImage('Kirk3.gif')
+    setBgImage('Kirk2.gif')
 })
-Mousetrap.bind("t", function(){
-    setBgImage('Kirk4.gif')
+Mousetrap.bind("d", function(){
+	typeText("i love you very much")
+})
+Mousetrap.bind("e", function(){
+    playSound("fascinating")
 })
 Mousetrap.bind("f", function(){
-    setBgImage('Kirk5.gif')
+    setBgImage('Kirk3.gif')
 })
 Mousetrap.bind("g", function(){
-    setBgImage('Kirk6.gif')
+	typeText("I hope you stay safe")
 })
 Mousetrap.bind("h", function(){
+    playSound("torpedo")
+})
+Mousetrap.bind("i", function(){
+    setBgImage('Kirk4.gif')
+})
+Mousetrap.bind("j", function(){
+	typeText("keep yourself warm and dry")
+})
+Mousetrap.bind("k", function(){
+    playSound("redalert")
+})
+Mousetrap.bind("l", function(){
+    setBgImage('Kirk5.gif')
+})
+Mousetrap.bind("m", function(){
+	typeText("hydrate")
+})
+
+Mousetrap.bind("o", function(){
     setBgImage('Kirk7.gif')
 })
+Mousetrap.bind("p", function(){
+    typeText("sleep well")
+})
+Mousetrap.bind("q", function(){
+    playSound("log")
+})
+Mousetrap.bind("r", function(){
+    setBgImage('Kirk8.gif')
+})
+Mousetrap.bind("n", function(){
+    typeText("if you are ever in a fight")
+})
+Mousetrap.bind("s", function(){
+    setBgImage('Kirk9.gif')
+})
+Mousetrap.bind("t", function(){
+    typeText("use your fists")
+})
+Mousetrap.bind("u", function(){
+    setBgImage('Kirk10.gif')
+})
+Mousetrap.bind("v", function(){
+    typeText("your whole body is a weapon")
+})
+Mousetrap.bind("w", function(){
+    setBgImage('Kirk12.gif')
+})
+Mousetrap.bind("x", function(){
+    typeText("improvise")
+})
+Mousetrap.bind("y", function(){
+    setBgImage('Kirk13.gif')
+})
+Mousetrap.bind("z", function(){
+    typeText("improvise")
+})
+Mousetrap.bind("enter", function(){
+    setBgImage('Enterprise1.gif')
+})
+Mousetrap.bind("1", function(){
+    setBgImage('Kirk14.gif')
+})
+Mousetrap.bind("2", function(){
+    typeText("improvise")
+})
+Mousetrap.bind("3", function(){
+    setBgImage('Kirk15.gif')
+})
+Mousetrap.bind("4", function(){
+    setBgImage('Spock1.gif')
+
+})
+Mousetrap.bind("5", function(){
+    setBgImage('Spock2.gif')
+})
+Mousetrap.bind("6", function(){
+    setBgImage('Gorn1.gif')
+})
+
+Mousetrap.bind("7", function(){
+    setBgImage('Enterprise2.gif')
+})
+
+
 Mousetrap.bind("backspace", function(){
 	$('h1').remove()
 })
+
 
 //show multiple lines of text
 function showText (text){
@@ -140,21 +200,19 @@ function setBgColor(color){
     $('html').css('background-image', "")
 }
 function setTextColor(color){
-    $('html').css('color', color)
-}
-
-function setup() {
-    createCanvas(windowWidth,windowHeight)
-}
-function mouseClicked() {
-    text("i love you",mouseX,mouseY)
+    $('html').css('color', white)
 }
 </script>
-<link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
-<audio id="heart" src="heartbeat.mp3" preload="auto"></audio>w
-<audio id="boom" src="explosion1.mp3" preload="auto"></audio>
-<audio id="sax" src="SFSax03.mp3" preload="auto"></audio>
+<audio id="opening" src="todOpeningRemastered.mp3" preload="auto" autoplay loop></audio>
+<audio id="intercom" src="tosintercom.mp3" preload="auto"></audio>
+<audio id="redalert" src="tosredalert.mp3" preload="auto"></audio>
+<audio id="torpedo" src="tosphotontorpedo.mp3" preload="auto"></audio>
+<audio id="fascinating" src="tosSpockFascinating.mp3" preload="auto"></audio>
+<audio id="theme" src="tosOpeningRemastered.mp3" preload="auto"></audio>
+<audio id="log" src="tosKirkCaptainsLogSupplemental.mp3" preload="auto"></audio>
+<audio id="illogical" src="tosKirkSpockYourIllogicalApproach.mp3" preload="auto"></audio>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
 <div id="textDiv">
-<h1>start typing<br> backspace to clear</h1>
+<h1>hit space: the final frontier </br> backspace to beam up</h1>
 </div>
 <span id="bottom"></span>
